@@ -113,7 +113,7 @@ body { font-family: var(--font-anthropic-sans); font-size: 15px;
     <div class="ys-kpi"><h3>65세 이상</h3><div class="v"><span data-draw="kOld" data-source="dong">—</span>명</div><div class="s">고령화율 <span data-draw="kRate" data-source="dong">—</span>% · 2026년 9월</div></div>
     <div class="ys-kpi"><h3>장애인(추정)</h3><div class="v"><span data-draw="kDis" data-source="dong">—</span>명</div><div class="s">구 합계 실제 · 동별은 추정</div></div>
     <div class="ys-kpi"><h3>초·중·고 학생</h3><div class="v"><span data-draw="kStu" data-source="summary">—</span>명</div><div class="s">초등 <span data-draw="kElem" data-source="summary">—</span>명 · 학교알리미</div></div>
-    <div class="ys-kpi"><h3>우선지원 칸 취약계층</h3><div class="v"><span data-draw="kPrio" data-source="grid weights">—</span><span data-draw="uP2">명</span></div><div class="s">복합취약지수 상위 10% · <span data-draw="kPrioN" data-source="grid weights">—</span>칸</div></div>
+    <div class="ys-kpi"><h3>우선지원 칸 취약계층</h3><div class="v"><span data-draw="kPrio" data-source="grid weights">—</span><span data-draw="uP2">명</span></div><div class="s">복합취약지수 상위 10% · <span data-draw="kPrioN" data-source="grid weights">—</span>칸</div><div class="s" data-draw="kPrioKind">추정 인구 · 장애 학생 일부 중복 가능</div></div>
     <div class="ys-kpi"><h3>운행빈도 사각 고령자</h3><div class="v"><span data-draw="kGap" data-source="dong">—</span>명</div><div class="s">트램 개통 후 <span data-draw="kGapT" data-source="dong">—</span>명</div></div>
     <div class="ys-kpi"><h3>저상버스 비율</h3><div class="v"><span data-draw="kLow" data-source="summary">—</span>%</div><div class="s">0% 노선 <span data-draw="kLow0" data-source="summary">—</span>개 · 11월 2일 오후</div></div>
     <div class="ys-kpi"><h3>공사 중 버스 속도</h3><div class="v"><span data-draw="kSpd" data-source="summary">—</span>%</div><div class="s">출근 7~9시 · 작년 10월 대비</div></div>
@@ -309,6 +309,7 @@ body { font-family: var(--font-anthropic-sans); font-size: 15px;
     <p><b>장애인 ×0.6</b> 중요도를 낮춘 값이 아니라 겹침을 빼는 값입니다. 65세 이상 장애인은 이미 '65세 이상'에 들어 있으므로, 장애인 중 65세 미만 몫만 더합니다. 전국 연령별 장애 출현율(2025)을 유성구 연령 구조에 적용하면 65세 미만 몫이 57.7%라 0.6으로 근사했습니다. 동별 실제 장애인 통계(정보공개청구)가 오면 다시 계산합니다.</p>
     <p><b>추정 인구와 가중 수요</b> 학생 포함 정도가 1이면 숫자는 격자별 추정 인구(명)입니다. 1보다 작으면 학생을 그만큼만 세므로 실제 사람 수가 아닌 가중 수요(명분)로 표시합니다. 장애인 ×0.6은 개인 단위로 중복을 확인해 지운 값이 아니라 연령 비율로 줄인 근사값입니다. 7~18세 장애 학생(유성구 약 600명 추정)은 학생과 장애인에 함께 들어가 약 360명(전체의 0.35%)이 두 번 세어질 수 있습니다.</p>
     <p><b>학생 포함 정도 민감도</b> 막대를 움직이면 제곱근 뒤 0~1 바꾸기(최소·최대)를 그때마다 다시 계산합니다. 학생 1.0 기준의 최소·최대를 고정해도 결과는 비슷합니다. 학생 0.5에서 우선지원 95칸 중 95칸(다시 계산)·92칸(고정), 학생 0에서 91칸·90칸이 그대로 유지되어 공간 분포는 대체로 유지됩니다. 지도에서 학생 막대를 내리면 바뀐 칸이 점선으로 표시됩니다.</p>
+    <p><b>설계 선택과 민감도</b> 다음은 결과를 본 뒤 고른 설계 선택이라 함께 공개합니다. ① 교통취약계층 수를 펼치는 방법: 처음에는 로그를 썼으나 사람이 거의 없는 외딴 칸만 우선지원으로 뽑혀 제곱근으로 바꿨습니다. 같은 가중치에서 우선지원 95칸 중 변환 없음은 88칸, 로그는 68칸이 지금과 겹칩니다. 학생 포함 정도(90~95칸)보다 이 선택의 영향이 더 큽니다. ② DRT 거점 반경: 1km에서는 조건을 만족하는 후보가 없어 1.5km로 넓혔습니다. 결선에서는 전문가 가중치(AHP)와 함께 이 선택들을 다시 검토합니다.</p>
     <p><b>정책 후보</b> 칸마다 이동 문제를 모두 찾고, 판단 순서에서 처음 걸린 문제로 주 정책을 고릅니다. 나머지 문제는 '함께 검토'로 보여줍니다. 정류장 신설은 노선 통과·도로 안전·기존 정류장 중복을 현장에서 확인해야 하고, 생활시설이 먼 곳은 시설 신설보다 목적지 연계 노선·DRT를 먼저 검토합니다.</p>
     <p><b>운행 빈도</b> '시간당 2대 이상 정류장'은 그 정류장을 지나는 노선들의 평일 시간당 운행 횟수(60 ÷ 배차간격의 합)로 고릅니다. 실제 대기시간이 아닙니다. 버스가 몰려 오면 더 오래 기다릴 수 있고, 정류장별 도착 시각표가 없어 대기시간은 계산하지 않았습니다.</p>
     <p><b>실제 값과 추정 값</b> 동별 인구·고령화율·학생 수·버스 승하차는 실제 통계입니다. 격자별 65세 이상·장애인·학생, 동별 장애인은 추정입니다. 저상버스 비율은 하루 오후 표본입니다.</p>
@@ -456,7 +457,8 @@ function prioByDong() {
 
 // 학생 포함 정도가 1이면 '추정 인구(명)', 아니면 가중치를 곱한 '가중 수요(명분)'
 const U = () => window.ysOpt.stu === 1 ? '명' : '명분';
-dash.draw('uP', (el) => { el.textContent = U(); });
+dash.draw('uP', (el) => { el.textContent = window.ysOpt.stu === 1 ? '명(추정, 일부 중복 가능)' : '명분(가중 수요)'; });
+dash.draw('kPrioKind', (el) => { el.textContent = window.ysOpt.stu === 1 ? '추정 인구 · 장애 학생 일부 중복 가능' : '가중 수요(학생 ×' + window.ysOpt.stu.toFixed(1) + ')'; });
 dash.draw('uP2', (el) => { el.textContent = U(); });
 dash.draw('uV', (el) => { el.textContent = U(); });
 // 학생 1.0(기본)과 비교해 우선지원에서 빠지거나 새로 들어온 칸
@@ -526,7 +528,7 @@ dash.draw('weightPanel', (el) => {
     onInput: (v, out) => { window.ysOpt = {...window.ysOpt, dense: v}; out.textContent = v + '명'; }});
 });
 let raf = 0;
-const DEP = ['map', 'mapLegend', 'uP', 'uP2', 'uV', 'changeNote', 'prioChart', 'policyChart', 'drtList', 'treeChart', 'kPrio', 'kPrioN', 'kVul', 'kVulSub', 'takePrio', 'takePrioDong', 'dongTable'];
+const DEP = ['map', 'mapLegend', 'uP', 'uP2', 'kPrioKind', 'uV', 'changeNote', 'prioChart', 'policyChart', 'drtList', 'treeChart', 'kPrio', 'kPrioN', 'kVul', 'kVulSub', 'takePrio', 'takePrioDong', 'dongTable'];
 function schedule() { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => DEP.forEach((n) => dash.draw(n))); }
 document.getElementById('w-reset').addEventListener('click', () => { window.ysW = baseW(); window.ysOpt = {...OPT0}; dash.draw('weightPanel'); schedule(); });
 document.getElementById('w-equal').addEventListener('click', () => { const b = baseW(); if (!b) return; window.ysW = Object.fromEntries(Object.keys(b).map((k) => [k, 0.2])); dash.draw('weightPanel'); schedule(); });
@@ -597,8 +599,21 @@ dash.draw('map', (el) => {
   const rings = d3.groups(b.data, (r) => r['행정동'] + '|' + r.ring).map(([k, rows]) => ({dong: k.split('|')[0], pts: rows.sort((a, c) => N(a.i) - N(c.i)).map((r) => [X(N(r.x)), Y(N(r.y))])}));
   const ringPath = (pts) => 'M' + pts.map((p) => p.join(',')).join('L') + 'Z';
   const m = (v) => isNaN(N(v)) ? '-' : fmt(Math.round(N(v))) + 'm';
+  const dd0 = prioDiff();
+  const why = (c, k) => {
+    if (!dd0 || !k) return '';
+    const st = '학생 ×' + window.ysOpt.stu.toFixed(1);
+    if (dd0.in.includes(c.cell)) return k.lack >= 0.5
+      ? st + '에서 새로 우선지원: 사람은 적지만 결핍 점수 ' + k.lack.toFixed(2) + '로 매우 높음 → 학생을 덜 세면 칸끼리 수요 점수 차이가 줄어 결핍이 큰 칸이 올라옴'
+      : st + '에서 새로 우선지원: 65세 이상(추정) ' + fmt(Math.round(N(c['고령']))) + '명으로 고령자가 많아, 학생을 빼도 수요 점수가 ' + k.need.toFixed(2) + '로 높게 유지됨';
+    if (dd0.out.includes(c.cell)) return N(c['학생']) >= 50
+      ? st + '에서 빠짐: 학생(추정) ' + fmt(Math.round(N(c['학생']))) + '명이 수요 점수를 받쳐 주던 칸 · 결핍 점수 ' + k.lack.toFixed(2)
+      : st + '에서 빠짐: 상위 10% 경계에 있던 칸이라 0~1 기준이 조금 바뀌어도 순위가 밀림 · 결핍 점수 ' + k.lack.toFixed(2);
+    return '';
+  };
   const cellTip = (c) => { const k = sc && sc.by.get(c.cell); return [
     c['행정동'] + ' · 격자 ' + c.cell + (k && k.prio ? ' · 우선지원' : ''),
+    why(c, k),
     k ? '복합취약지수 ' + k.idx.toFixed(2) + ' (수요 ' + k.need.toFixed(2) + ' × 결핍 ' + k.lack.toFixed(2) + ')' : '사람이 거의 없는 칸',
     k ? '정책 후보: ' + k.type + (k.dx.also.length ? ' · 함께 검토: ' + k.dx.also.join(', ') : '') : '',
     k ? '문제: ' + k.dx.problems.join(' / ') : '',
