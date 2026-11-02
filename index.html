@@ -95,6 +95,8 @@ body { font-family: var(--font-anthropic-sans); font-size: 15px;
 .ys-tno { color:var(--ys-sub); padding-left:10px; }
 .ys td.ok { color:var(--ys-green); } .ys td.no { color:var(--ys-red); } .ys td.mid { color:var(--ys-yel); }
 #inv-card td, #inv-card th { text-align:left; white-space:normal; }
+.ys-change:empty { display:none; }
+.ys-change { margin:6px 0 0; color:var(--ys-yel); font-size:var(--cds-font-size-caption); line-height:1.5; }
 </style>
 </head>
 <body>
@@ -104,14 +106,14 @@ body { font-family: var(--font-anthropic-sans); font-size: 15px;
     <h1>트램 공사기의 이동 공백</h1>
     <span>유성구 교통복합취약지역 진단과 맞춤형 교통정책 도출 · 250m 격자 · 2026년</span>
   </header>
-  <p class="ys-take">교통이 불편하고 교통취약계층도 많은 <b>우선지원 칸</b>에 사는 교통취약계층은 <b data-draw="takePrio" data-source="grid weights">—</b>명입니다. 가장 많은 동은 <b data-draw="takePrioDong" data-source="grid weights">—</b>입니다. 트램 공사 중 출근길 버스는 작년보다 평균 <b data-draw="takeSpeed" data-source="summary">—</b>% 느려졌고, 가장 많이 느려진 동은 <b data-draw="takeSpeedDong" data-source="dong">—</b>입니다. 저상버스가 한 번도 오지 않은 노선은 <b data-draw="takeLow" data-source="summary">—</b>개입니다.</p>
+  <p class="ys-take">교통이 불편하고 교통취약계층도 많은 <b>우선지원 칸</b>에 사는 교통취약계층은 <b data-draw="takePrio" data-source="grid weights">—</b><span data-draw="uP">명</span>입니다. 가장 많은 동은 <b data-draw="takePrioDong" data-source="grid weights">—</b>입니다. 트램 공사 중 출근길 버스는 작년보다 평균 <b data-draw="takeSpeed" data-source="summary">—</b>% 느려졌고, 가장 많이 느려진 동은 <b data-draw="takeSpeedDong" data-source="dong">—</b>입니다. 저상버스가 한 번도 오지 않은 노선은 <b data-draw="takeLow" data-source="summary">—</b>개입니다.</p>
 
   <section class="ys-kpis" aria-label="주요 지표">
-    <div class="ys-kpi"><h3>교통취약계층</h3><div class="v"><span data-draw="kVul" data-source="dong">—</span>명</div><div class="s" data-draw="kVulSub">고령 + 장애인×0.6 + 7~18세</div></div>
+    <div class="ys-kpi"><h3>교통취약계층</h3><div class="v"><span data-draw="kVul" data-source="dong">—</span><span data-draw="uV">명</span></div><div class="s" data-draw="kVulSub">고령 + 장애인×0.6 + 7~18세</div></div>
     <div class="ys-kpi"><h3>65세 이상</h3><div class="v"><span data-draw="kOld" data-source="dong">—</span>명</div><div class="s">고령화율 <span data-draw="kRate" data-source="dong">—</span>% · 2026년 9월</div></div>
     <div class="ys-kpi"><h3>장애인(추정)</h3><div class="v"><span data-draw="kDis" data-source="dong">—</span>명</div><div class="s">구 합계 실제 · 동별은 추정</div></div>
     <div class="ys-kpi"><h3>초·중·고 학생</h3><div class="v"><span data-draw="kStu" data-source="summary">—</span>명</div><div class="s">초등 <span data-draw="kElem" data-source="summary">—</span>명 · 학교알리미</div></div>
-    <div class="ys-kpi"><h3>우선지원 칸 취약계층</h3><div class="v"><span data-draw="kPrio" data-source="grid weights">—</span>명</div><div class="s">복합취약지수 상위 10% · <span data-draw="kPrioN" data-source="grid weights">—</span>칸</div></div>
+    <div class="ys-kpi"><h3>우선지원 칸 취약계층</h3><div class="v"><span data-draw="kPrio" data-source="grid weights">—</span><span data-draw="uP2">명</span></div><div class="s">복합취약지수 상위 10% · <span data-draw="kPrioN" data-source="grid weights">—</span>칸</div></div>
     <div class="ys-kpi"><h3>운행빈도 사각 고령자</h3><div class="v"><span data-draw="kGap" data-source="dong">—</span>명</div><div class="s">트램 개통 후 <span data-draw="kGapT" data-source="dong">—</span>명</div></div>
     <div class="ys-kpi"><h3>저상버스 비율</h3><div class="v"><span data-draw="kLow" data-source="summary">—</span>%</div><div class="s">0% 노선 <span data-draw="kLow0" data-source="summary">—</span>개 · 11월 2일 오후</div></div>
     <div class="ys-kpi"><h3>공사 중 버스 속도</h3><div class="v"><span data-draw="kSpd" data-source="summary">—</span>%</div><div class="s">출근 7~9시 · 작년 10월 대비</div></div>
@@ -174,6 +176,7 @@ body { font-family: var(--font-anthropic-sans); font-size: 15px;
         <span class="ys-faclegend ys-cap" data-cap="fac" hidden><span style="--c:#4FC3D9">병원</span><span style="--c:#6CC46F">약국</span><span style="--c:#A78BFA">노인복지</span><span style="--c:#C4B5FD">경로당</span><span style="--c:#2DD4BF">요양기관</span><span style="--c:#F472B6">장애인복지</span><span style="--c:#FF9F43">대형마트</span><span style="--c:#FFFFFF">공공기관</span><span style="--c:#F2545B">지하철역</span><span style="--c:#E8C547">트램 정거장(예정)</span></span>
       </div>
       <div class="ys-map" data-draw="map" data-source="grid boundary fac stops dong weights"></div>
+      <p class="ys-change" data-draw="changeNote" data-source="grid weights"></p>
     </section>
     </div>
 
@@ -304,6 +307,8 @@ body { font-family: var(--font-anthropic-sans); font-size: 15px;
     <p><b>가중치</b> 기본값은 엔트로피 가중치입니다. 주관이 들어가지 않는 대신, 값이 고르지 않은 지표에 무게가 쏠립니다. 결선에서는 전문가 설문(AHP) 가중치와 비교할 계획입니다.</p>
     <p><b>가정값</b> '고정 노선 인구 기준'(칸당 150명)은 근거가 확정되지 않은 시범 가정값입니다. 막대로 바꾸면 정류장 신설·증편과 DRT의 경계가 어떻게 달라지는지 볼 수 있습니다. '학생 포함 정도'를 0으로 내리면 고령자·장애인만으로 지수를 다시 계산합니다(엔트로피 가중치는 기본값 그대로).</p>
     <p><b>장애인 ×0.6</b> 중요도를 낮춘 값이 아니라 겹침을 빼는 값입니다. 65세 이상 장애인은 이미 '65세 이상'에 들어 있으므로, 장애인 중 65세 미만 몫만 더합니다. 전국 연령별 장애 출현율(2025)을 유성구 연령 구조에 적용하면 65세 미만 몫이 57.7%라 0.6으로 근사했습니다. 동별 실제 장애인 통계(정보공개청구)가 오면 다시 계산합니다.</p>
+    <p><b>추정 인구와 가중 수요</b> 학생 포함 정도가 1이면 숫자는 격자별 추정 인구(명)입니다. 1보다 작으면 학생을 그만큼만 세므로 실제 사람 수가 아닌 가중 수요(명분)로 표시합니다. 장애인 ×0.6은 개인 단위로 중복을 확인해 지운 값이 아니라 연령 비율로 줄인 근사값입니다. 7~18세 장애 학생(유성구 약 600명 추정)은 학생과 장애인에 함께 들어가 약 360명(전체의 0.35%)이 두 번 세어질 수 있습니다.</p>
+    <p><b>학생 포함 정도 민감도</b> 막대를 움직이면 제곱근 뒤 0~1 바꾸기(최소·최대)를 그때마다 다시 계산합니다. 학생 1.0 기준의 최소·최대를 고정해도 결과는 비슷합니다. 학생 0.5에서 우선지원 95칸 중 95칸(다시 계산)·92칸(고정), 학생 0에서 91칸·90칸이 그대로 유지되어 공간 분포는 대체로 유지됩니다. 지도에서 학생 막대를 내리면 바뀐 칸이 점선으로 표시됩니다.</p>
     <p><b>정책 후보</b> 칸마다 이동 문제를 모두 찾고, 판단 순서에서 처음 걸린 문제로 주 정책을 고릅니다. 나머지 문제는 '함께 검토'로 보여줍니다. 정류장 신설은 노선 통과·도로 안전·기존 정류장 중복을 현장에서 확인해야 하고, 생활시설이 먼 곳은 시설 신설보다 목적지 연계 노선·DRT를 먼저 검토합니다.</p>
     <p><b>운행 빈도</b> '시간당 2대 이상 정류장'은 그 정류장을 지나는 노선들의 평일 시간당 운행 횟수(60 ÷ 배차간격의 합)로 고릅니다. 실제 대기시간이 아닙니다. 버스가 몰려 오면 더 오래 기다릴 수 있고, 정류장별 도착 시각표가 없어 대기시간은 계산하지 않았습니다.</p>
     <p><b>실제 값과 추정 값</b> 동별 인구·고령화율·학생 수·버스 승하차는 실제 통계입니다. 격자별 65세 이상·장애인·학생, 동별 장애인은 추정입니다. 저상버스 비율은 하루 오후 표본입니다.</p>
@@ -398,12 +403,12 @@ function diagnose(c) {
 window.ysW = window.ysW || null;
 function baseW() { const w = dash.data('weights'); return w.status === 'ok' ? Object.fromEntries(w.data.map((r) => [r['지표'], N(r['엔트로피가중치'])])) : null; }
 function curW() { if (!window.ysW) window.ysW = baseW(); return window.ysW; }
-let memo = {key: null, val: null};
+const memo = new Map();
 function score() {
   const g = dash.data('grid'), W = curW();
   if (g.status !== 'ok' || !W) return null;
   const key = JSON.stringify([W, window.ysOpt]);
-  if (memo.key === key && memo.grid === g.data) return memo.val;
+  const hit = memo.get(key); if (hit && hit.grid === g.data) return hit.val;
   const names = Object.keys(W), def = names.filter((n) => !NEED.includes(n));
   const sn = d3.sum(NEED, (n) => W[n]) || 1, sd = d3.sum(def, (n) => W[n]) || 1;
   const rows = g.data.filter((c) => c['지표_' + names[0]] !== '' && c['지표_' + names[0]] != null);
@@ -441,7 +446,7 @@ function score() {
   }
   const ls = cells.map((d) => d.lack).sort(d3.ascending);
   const val = {by, cells, prio, cut, sites, max: sorted[Math.floor(sorted.length * 0.99)], lackMax: ls[Math.floor(ls.length * 0.99)]};
-  memo = {key, grid: g.data, val};
+  if (memo.size > 40) memo.clear(); memo.set(key, {grid: g.data, val});
   return val;
 }
 function prioByDong() {
@@ -449,6 +454,26 @@ function prioByDong() {
   return d3.rollup(s.prio, (v) => ({cnt: v.length, vul: d3.sum(v, (d) => d.vul), types: d3.rollup(v, (q) => d3.sum(q, (d) => d.vul), (d) => d.type)}), (d) => d.c['행정동']);
 }
 
+// 학생 포함 정도가 1이면 '추정 인구(명)', 아니면 가중치를 곱한 '가중 수요(명분)'
+const U = () => window.ysOpt.stu === 1 ? '명' : '명분';
+dash.draw('uP', (el) => { el.textContent = U(); });
+dash.draw('uP2', (el) => { el.textContent = U(); });
+dash.draw('uV', (el) => { el.textContent = U(); });
+// 학생 1.0(기본)과 비교해 우선지원에서 빠지거나 새로 들어온 칸
+function prioDiff() {
+  if (window.ysOpt.stu === 1) return null;
+  const cur = score(); if (!cur) return null;
+  const save = window.ysOpt; window.ysOpt = {...save, stu: 1}; const base = score(); window.ysOpt = save;
+  const A = new Set(base.prio.map((d) => d.c.cell)), B = new Set(cur.prio.map((d) => d.c.cell));
+  const dong = (id) => (cur.by.get(id) || base.by.get(id)).c['행정동'];
+  return {out: [...A].filter((x) => !B.has(x)), in: [...B].filter((x) => !A.has(x)), same: [...A].filter((x) => B.has(x)).length, n: A.size, dong};
+}
+dash.draw('changeNote', (el) => {
+  const d = prioDiff();
+  if (!d) { el.textContent = ''; return; }
+  const list = (ids) => ids.length ? ids.map((id) => d.dong(id) + ' ' + id).join(', ') : '없음';
+  el.textContent = '학생 ×' + window.ysOpt.stu.toFixed(1) + ' (기본 1.0과 비교): 우선지원 ' + d.n + '칸 중 ' + d.same + '칸 그대로 · 빠진 칸(분홍 점선) ' + list(d.out) + ' · 새로 들어온 칸(흰 점선) ' + list(d.in);
+});
 const sumD = (k) => { const d = dash.data('dong'); return d.status === 'ok' ? d3.sum(d.data, (r) => N(r[k])) : NaN; };
 const dongVul = (r) => N(r['고령인구']) + 0.6 * N(r['장애인_추정']) + window.ysOpt.stu * N(r['학생_7_18']);
 const txt = (f) => (el) => { const v = f(); el.textContent = v == null || (typeof v === 'number' && isNaN(v)) ? '—' : v; };
@@ -469,7 +494,7 @@ dash.draw('kLow', txt(() => sm('저상비율_전체').toFixed(1)));
 dash.draw('kLow0', txt(() => sm('저상0_노선') + ' / ' + sm('저상_관측노선')));
 dash.draw('kSpd', txt(() => sm('출근속도변화_평균').toFixed(1)));
 dash.draw('takePrio', txt(prioVul));
-dash.draw('takePrioDong', txt(() => { const m = prioByDong(); if (!m || !m.size) return null; const [n, v] = d3.greatest([...m], ([, v]) => v.vul); return n + '(' + fmt(Math.round(v.vul)) + '명)'; }));
+dash.draw('takePrioDong', txt(() => { const m = prioByDong(); if (!m || !m.size) return null; const [n, v] = d3.greatest([...m], ([, v]) => v.vul); return n + '(' + fmt(Math.round(v.vul)) + U() + ')'; }));
 dash.draw('takeSpeed', txt(() => Math.abs(sm('출근속도변화_평균')).toFixed(1)));
 dash.draw('takeSpeedDong', txt(() => { const d = dash.data('dong'); if (d.status !== 'ok') return null; const r = d3.least(d.data, (r) => N(r['버스속도변화_출근'])); return r['행정동'] + '(' + N(r['버스속도변화_출근']).toFixed(1) + '%)'; }));
 dash.draw('takeLow', txt(() => sm('저상0_노선')));
@@ -501,7 +526,7 @@ dash.draw('weightPanel', (el) => {
     onInput: (v, out) => { window.ysOpt = {...window.ysOpt, dense: v}; out.textContent = v + '명'; }});
 });
 let raf = 0;
-const DEP = ['map', 'mapLegend', 'prioChart', 'policyChart', 'drtList', 'treeChart', 'kPrio', 'kPrioN', 'kVul', 'kVulSub', 'takePrio', 'takePrioDong', 'dongTable'];
+const DEP = ['map', 'mapLegend', 'uP', 'uP2', 'uV', 'changeNote', 'prioChart', 'policyChart', 'drtList', 'treeChart', 'kPrio', 'kPrioN', 'kVul', 'kVulSub', 'takePrio', 'takePrioDong', 'dongTable'];
 function schedule() { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => DEP.forEach((n) => dash.draw(n))); }
 document.getElementById('w-reset').addEventListener('click', () => { window.ysW = baseW(); window.ysOpt = {...OPT0}; dash.draw('weightPanel'); schedule(); });
 document.getElementById('w-equal').addEventListener('click', () => { const b = baseW(); if (!b) return; window.ysW = Object.fromEntries(Object.keys(b).map((k) => [k, 0.2])); dash.draw('weightPanel'); schedule(); });
@@ -599,6 +624,12 @@ dash.draw('map', (el) => {
     svg.append('g').selectAll('rect').data(cells).join('rect').call(rect).attr('fill', (c) => { const k = sc.by.get(c.cell);
       if (spec.mode === 'score') return spec.color(k.idx);
       return k.prio ? PCOL[k.type] : '#4A5072'; });
+    const dd = prioDiff();
+    if (dd) {
+      const pos = new Map(grid.map((c) => [c.cell, c]));
+      [[dd.out, '#F472B6'], [dd.in, '#FFFFFF']].forEach(([ids, col]) => svg.append('g').attr('pointer-events', 'none').selectAll('rect').data(ids.map((id) => pos.get(id)).filter(Boolean)).join('rect')
+        .attr('x', (c) => X(c.col) - 1.5).attr('y', (c) => Y(c.row + 1) - 1.5).attr('width', s + 3).attr('height', s + 3).attr('fill', 'none').attr('stroke', col).attr('stroke-width', 2).attr('stroke-dasharray', '3 2'));
+    }
     if (spec.mode === 'score') {
       svg.append('g').attr('pointer-events', 'none').selectAll('rect').data(cells.filter((c) => sc.by.get(c.cell).prio)).join('rect')
         .attr('x', (c) => X(c.col) + 0.8).attr('y', (c) => Y(c.row + 1) + 0.8).attr('width', s - 1.6).attr('height', s - 1.6).attr('fill', 'none').attr('stroke', '#FFE066').attr('stroke-width', 1.4);
@@ -710,8 +741,8 @@ dash.draw('prioChart', (el) => {
   if (!m) { el.textContent = '—'; return; }
   const rows = [...m].map(([n, v]) => ({n, ...v})).sort((a, b) => b.vul - a.vul);
   if (!rows.length) { el.textContent = '우선지원 칸이 없습니다'; return; }
-  const {svg, x, y, bh, left} = hbars(el, rows, {label: (r) => r.n, value: (r) => r.vul, color: 'none', text: (r) => fmt(Math.round(r.vul)) + '명 · ' + r.cnt + '칸',
-    tipLines: (r) => [r.n + ' 우선지원 ' + r.cnt + '칸', ...PTYPES.filter((t) => r.types.get(t)).map((t) => t + ' ' + fmt(Math.round(r.types.get(t))) + '명')]});
+  const {svg, x, y, bh, left} = hbars(el, rows, {label: (r) => r.n, value: (r) => r.vul, color: 'none', text: (r) => fmt(Math.round(r.vul)) + U() + ' · ' + r.cnt + '칸',
+    tipLines: (r) => [r.n + ' 우선지원 ' + r.cnt + '칸', ...PTYPES.filter((t) => r.types.get(t)).map((t) => t + ' ' + fmt(Math.round(r.types.get(t))) + U())]});
   rows.forEach((r, i) => { let acc = 0; PTYPES.forEach((t) => { const v = r.types.get(t) || 0; if (!v) return;
     svg.append('rect').attr('pointer-events', 'none').attr('x', x(acc)).attr('y', y(i)).attr('height', bh).attr('width', Math.max(0, x(acc + v) - x(acc))).attr('fill', PCOL[t]); acc += v; }); });
 });
@@ -720,8 +751,8 @@ dash.draw('policyChart', (el) => {
   if (!s) { el.textContent = '—'; return; }
   const by = d3.rollup(s.prio, (v) => ({vul: d3.sum(v, (d) => d.vul), old: d3.sum(v, (d) => N(d.c['고령'])), n: v.length}), (d) => d.type);
   const rows = PTYPES.map((t) => ({t, ...(by.get(t) || {vul: 0, old: 0, n: 0})}));
-  hbars(el, rows, {label: (r) => r.t, value: (r) => r.vul, color: (r) => PCOL[r.t], text: (r) => fmt(Math.round(r.vul)) + '명 · ' + r.n + '칸',
-    tipLines: (r) => [r.t, '교통취약계층 ' + fmt(Math.round(r.vul)) + '명', '그중 65세 이상 ' + fmt(Math.round(r.old)) + '명', '우선지원 ' + r.n + '칸']});
+  hbars(el, rows, {label: (r) => r.t, value: (r) => r.vul, color: (r) => PCOL[r.t], text: (r) => fmt(Math.round(r.vul)) + U() + ' · ' + r.n + '칸',
+    tipLines: (r) => [r.t, '교통취약계층 ' + fmt(Math.round(r.vul)) + U(), '그중 65세 이상 ' + fmt(Math.round(r.old)) + '명', '우선지원 ' + r.n + '칸']});
 });
 dash.draw('drtList', (el) => {
   el.replaceChildren(); const s = score();
@@ -730,7 +761,7 @@ dash.draw('drtList', (el) => {
   el.append(h);
   if (!s.sites.length) { const p = document.createElement('div'); p.textContent = '조건에 맞는 후보가 없습니다'; el.append(p); return; }
   const ol = document.createElement('ol');
-  s.sites.forEach((p) => { const li = document.createElement('li'); li.textContent = p.dong + ' 격자 ' + p.cell + ' — 반경 1.5km 우선지원 교통취약계층 ' + fmt(p.vul) + '명(65세+ ' + fmt(p.old) + '명)'; ol.append(li); });
+  s.sites.forEach((p) => { const li = document.createElement('li'); li.textContent = p.dong + ' 격자 ' + p.cell + ' — 반경 1.5km 우선지원 교통취약계층 ' + fmt(p.vul) + U() + '(65세+ ' + fmt(p.old) + '명)'; ol.append(li); });
   el.append(ol);
 });
 
@@ -754,7 +785,7 @@ dash.draw('treeChart', (el) => {
     const ys = document.createElement('div'); ys.className = 'ys-tyes';
     const lab = document.createElement('span'); lab.className = 'ys-tlab'; lab.textContent = i < TREE.length - 1 ? '예 →' : '→'; ys.append(lab);
     t.yes.forEach(([cond, pol, key]) => { const b = document.createElement('span'); b.className = 'ys-tleaf'; b.style.setProperty('--c', PCOL[pol]);
-      b.textContent = (cond ? cond + ': ' : '') + pol + ' (' + (s ? fmt(Math.round(cnt.get(key) || 0)) + '명' : '—') + ')'; ys.append(b); });
+      b.textContent = (cond ? cond + ': ' : '') + pol + ' (' + (s ? fmt(Math.round(cnt.get(key) || 0)) + U() : '—') + ')'; ys.append(b); });
     row.append(q, ys); el.append(row);
     if (i < TREE.length - 2) { const dn = document.createElement('div'); dn.className = 'ys-tno'; dn.textContent = '아니오 ↓'; el.append(dn); }
   });
